@@ -496,7 +496,7 @@ describe('fails when', () => {
                 _EXTERNALREF_: ''
             }
         })).rejects.toEqual(
-            new Error('Error. Minutes worked must be larger than 0.')
+            new Error('Error. Attribute added without value.')
         )
     })
 })

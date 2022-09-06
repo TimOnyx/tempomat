@@ -115,11 +115,11 @@ function remainingEstimateSeconds(referenceDate: Date, remainingEstimate?: strin
 
 function toRequestAttributes(attributes?: WorkLogAttributes): WorkLogRequestAttribute[] | undefined {
     if (!attributes) {
-        return undefined;
+        return undefined
     }
 
     return Object.keys(attributes).map(key => {
-        const value = attributes?.[key];
+        const value = attributes?.[key]
         if (!value) {
             throw Error('Error. Attribute added without value.')
         }
@@ -127,8 +127,8 @@ function toRequestAttributes(attributes?: WorkLogAttributes): WorkLogRequestAttr
         return {
             key,
             value
-        };
-    });
+        }
+    })
 }
 
 async function generateWorklogs(worklogsResponse: GetWorklogsResponse, formattedDate: string): Promise<Worklog[]> {

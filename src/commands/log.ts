@@ -40,6 +40,22 @@ export default class Log extends Command {
         'remaining-estimate': flags.string({
             char: 'r',
             description: 'remaining estimate'
+        }),
+        worklogType: flags.enum({
+            char: 'w',
+            description: 'worklog type',
+            options: [
+                'Ticket Writing/Analysis',
+                'Investigation/Technical Support/Research',
+                'Development/Deployment',
+                'Code Review',
+                'Manual Testing',
+                'Rework Development/Test',
+                'Unit Test Writing',
+                'Automation Test Writing',
+                'ISO2K1 Registrations/OV-408: SCRUM Meetings',
+                'OV-57: NON-TICKET-SPECIFIC Worklogs'
+            ]
         })
     }
 
@@ -72,7 +88,10 @@ export default class Log extends Command {
             when: args.when,
             description: flags.description,
             startTime: flags.start,
-            remainingEstimate: flags['remaining-estimate']
+            remainingEstimate: flags['remaining-estimate'],
+            attributes: flags.worklogType ? {
+                _WorklogTypes_: flags.worklogType
+            } : undefined
         })
     }
 }
