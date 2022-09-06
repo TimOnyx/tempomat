@@ -45,16 +45,18 @@ export default class Log extends Command {
             char: 'w',
             description: 'worklog type',
             options: [
-                'Ticket Writing/Analysis',
-                'Investigation/Technical Support/Research',
-                'Development/Deployment',
-                'Code Review',
-                'Manual Testing',
-                'Rework Development/Test',
-                'Unit Test Writing',
-                'Automation Test Writing',
-                'ISO2K1 Registrations/OV-408: SCRUM Meetings',
-                'OV-57: NON-TICKET-SPECIFIC Worklogs'
+                /* eslint-disable no-multi-spaces */
+                'TicketWriting',                // "Ticket Writing/Analysis",
+                'Analysis',                     // "Investigation/Technical Support/Research",
+                'Development',                  // "Development/Deployment",
+                'CodeReview',                   // "Code Review",
+                'ManualTesting',                // "Manual Testing",
+                'Rework',                       // "Rework Development/Test",
+                'UnitTestWriting',              // "Unit Test Writing",
+                'AutomationTestWriting',        // "Automation Test Writing",
+                'Overhead:AdministrativeTasks', // "ISO2K1 Registrations/OV-408: SCRUM Meetings",
+                'Overhead:Meetings'             // "OV-57: NON-TICKET-SPECIFIC Worklogs"
+                /* eslint-enable no-multi-spaces */
             ]
         })
     }
