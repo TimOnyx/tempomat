@@ -1,4 +1,4 @@
-import api, { IssueEntity, WorklogEntity, GetWorklogsResponse } from '../api/api'
+import api, { IssueEntity, WorklogEntity, GetWorklogsResponse, WorkLogRequestAttribute } from '../api/api'
 import * as timeParser from './timeParser'
 import { ParseResult, Interval } from './timeParser'
 import time from '../time'
@@ -15,6 +15,8 @@ const YESTERDAY_LITERALS = ['y', 'yesterday']
 const TODAY_LITERALS = ['t', 'today']
 const TODAY_REFERENCE_REGEX = RegExp(`^(${TODAY_LITERALS.join('|')})[-+][0-9]+$`)
 
+export type WorkLogAttributes = Record<string, string>;
+
 export type AddWorklogInput = {
     issueKeyOrAlias: string
     durationOrInterval: string
@@ -22,6 +24,7 @@ export type AddWorklogInput = {
     description?: string
     startTime?: string,
     remainingEstimate?: string
+    attributes?: WorkLogAttributes
 }
 
 export type Worklog = {
@@ -58,7 +61,8 @@ export default {
             startDate: format(referenceDate, DATE_FORMAT),
             startTime: startTime(parseResult, input.startTime, referenceDate),
             description: input.description,
-            remainingEstimateSeconds: remainingEstimateSeconds(referenceDate, input.remainingEstimate)
+            remainingEstimateSeconds: remainingEstimateSeconds(referenceDate, input.remainingEstimate),
+            attributes: toRequestAttributes(input.attributes)
         })
         return toWorklog(worklogEntity)
     },
@@ -107,6 +111,24 @@ function remainingEstimateSeconds(referenceDate: Date, remainingEstimate?: strin
         return result.seconds
     }
     return undefined
+}
+
+function toRequestAttributes(attributes?: WorkLogAttributes): WorkLogRequestAttribute[] | undefined {
+    if (!attributes) {
+        return undefined;
+    }
+
+    return Object.keys(attributes).map(key => {
+        const value = attributes?.[key];
+        if (!value) {
+            throw Error('Error. Attribute added without value.')
+        }
+
+        return {
+            key,
+            value
+        };
+    });
 }
 
 async function generateWorklogs(worklogsResponse: GetWorklogsResponse, formattedDate: string): Promise<Worklog[]> {

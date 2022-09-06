@@ -4,6 +4,11 @@ import tempoAxios from './tempoAxios'
 import flags from '../globalFlags'
 import { appName } from '../appName'
 
+export type WorkLogRequestAttribute = {
+    key: string;
+    value: string;
+}
+
 export type AddWorklogRequest = {
     issueKey: string;
     timeSpentSeconds: number;
@@ -11,6 +16,7 @@ export type AddWorklogRequest = {
     startTime: string;
     description?: string;
     remainingEstimateSeconds?: number
+    attributes?: WorkLogRequestAttribute[]
 }
 
 export type GetWorklogsRequest = {

@@ -395,6 +395,29 @@ describe('adds a worklog', () => {
             remainingEstimateSeconds: 0
         })
     })
+
+    test('with attributes', async () => {
+        await worklogs.addWorklog({
+            issueKeyOrAlias: 'ABC-123',
+            durationOrInterval: '1h',
+            attributes: {
+                _EXTERNALREF_: 'EXT-32548'
+            }
+        })
+
+        expect(addWorklogMock).toHaveBeenCalledWith({
+            issueKey: 'ABC-123',
+            timeSpentSeconds: 3600,
+            startDate: '2020-02-28',
+            startTime: '12:00:00',
+            attributes: [
+                {
+                    key: '_EXTERNALREF_',
+                    value: 'EXT-32548'
+                }
+            ]
+        })
+    })
 })
 
 describe('fails when', () => {
@@ -460,6 +483,18 @@ describe('fails when', () => {
         await expect(worklogs.addWorklog({
             issueKeyOrAlias: 'ABC-123',
             durationOrInterval: '0h'
+        })).rejects.toEqual(
+            new Error('Error. Minutes worked must be larger than 0.')
+        )
+    })
+
+    test('attribute has no value', async () => {
+        await expect(worklogs.addWorklog({
+            issueKeyOrAlias: 'ABC-123',
+            durationOrInterval: '1h',
+            attributes: {
+                _EXTERNALREF_: ''
+            }
         })).rejects.toEqual(
             new Error('Error. Minutes worked must be larger than 0.')
         )
