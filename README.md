@@ -1,3 +1,27 @@
+## Onyx One specific changes:
+
+- use `-w` to add a work log type.
+- use `tempo fromToggl [start] [end]` to generate commands based on a Toggl export. For this to work, use 
+
+### Worklog types
+
+Worklog type is required by our Jira setup. Available types can be found in `src/commands/log.ts`
+
+### Generate commands based on a Toggl export
+
+For this to work, you first need to create a `secrets.ts` file. You can copy `secrets.example.ts` as a base template.
+
+- `token` can easily be found here: https://track.toggl.com/profile#api-token-label
+- `user_ids` is a filter for **your** user id. You can find it by 
+  - going to https://track.toggl.com/reports/summary/
+  - open the network tab of the inspector
+  - Change the filtering: by "Team" to '\<name\> (you)'
+  - Inspect the `time_entries` request payload, it should have `user_ids` at the bottom
+- `workspace_id` should be the id of the only result on the [workspaces request](https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md). If you have multiple, make sure you select the one you want to export from
+- `user_agent` Toggl requests everyone who uses their API to include an email address. It's required by the API and this feature will not work without it.
+
+----
+
 <img src="logo.svg" width="280" alt="tempomat">
 
 [Tempo.io](https://tempo.io) cloud CLI
