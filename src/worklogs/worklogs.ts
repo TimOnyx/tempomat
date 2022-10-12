@@ -9,7 +9,7 @@ import { appName } from '../appName'
 import authenticator from '../config/authenticator'
 import aliases from '../config/aliases'
 
-const DATE_FORMAT = 'yyyy-MM-dd'
+export const DATE_FORMAT = 'yyyy-MM-dd'
 const START_TIME_FORMAT = 'HH:mm:ss'
 const YESTERDAY_LITERALS = ['y', 'yesterday']
 const TODAY_LITERALS = ['t', 'today']
@@ -157,7 +157,7 @@ async function checkToken() {
     }
 }
 
-function parseWhenArg(now: Date, when: string | undefined): Date {
+export function parseWhenArg(now: Date, when: string | undefined): Date {
     if (when === undefined) return now
     if (YESTERDAY_LITERALS.includes(when)) {
         const nowAtMidnight = new Date(now)
