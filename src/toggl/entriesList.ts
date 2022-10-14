@@ -65,6 +65,12 @@ function getTicketFromDescription(description: string): string {
     if (description.includes('QB-')) {
         return description.split(':')[0]
     }
+    if (description.includes('CBRS-')) {
+        return description.split(':')[0]
+    }
+    if (description.includes('HSSE-')) {
+        return description.split(':')[0]
+    }
     if (description.includes('NP-')) {
         return description.split(':')[0]
     }
