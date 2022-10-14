@@ -167,7 +167,7 @@ function getTypeFromTicketTaskAndDescription(ticket: string, task: string | null
     }
 
     // CODE REVIEW
-    if (description.toLowerCase().includes('pr')) {
+    if (description.includes('PR')) {
         return TYPES.codeReview
     }
     if (description.toLowerCase().includes('code review')) {
