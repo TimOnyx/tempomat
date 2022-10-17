@@ -1,3 +1,17 @@
+## Setup
+
+1. Follow the original Tempomat instructions below
+1. Copy this repo to your local
+1. run `npm install`
+1. run `npm link`
+1. Create a secrets.ts file (see instructions below)
+
+## Usage
+
+1. `tempo fromToggl [start] [end]` Both start and end are optional.
+1. Copy the output back into the terminal.
+1. Don't close the terminal while it is still running. 
+
 ## Onyx One specific changes:
 
 - use `-w` to add a work log type.
@@ -15,8 +29,8 @@ For this to work, you first need to create a `secrets.ts` file. You can copy `se
 - `user_ids` is a filter for **your** user id. You can find it by 
   - going to https://track.toggl.com/reports/summary/
   - open the network tab of the inspector
-  - Change the filtering: by "Team" to '\<name\> (you)'
-  - Inspect the `time_entries` request payload, it should have `user_ids` at the bottom
+  - change the filtering: by "Team" to '\<name\> (you)'
+  - from the url, you can copy your user id
 - `workspace_id` should be the id of the only result on the [workspaces request](https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md). If you have multiple, make sure you select the one you want to export from
 - `user_agent` Toggl requests everyone who uses their API to include an email address. It's required by the API and this feature will not work without it.
 
