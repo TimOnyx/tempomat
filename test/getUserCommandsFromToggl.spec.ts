@@ -321,6 +321,28 @@ describe('get user commands from Toggl', () => {
                 is_billable: false,
                 cur: null,
                 tags: []
+            },
+            {
+                id: 2694263891,
+                pid: 149288363,
+                tid: 22591279,
+                uid: 6460477,
+                description: 'ES-1034: Write script',
+                start: '2022-10-19T13:36:57+02:00',
+                end: '2022-10-19T17:32:27+02:00',
+                updated: '2022-10-19T17:28:17+02:00',
+                dur: 14130000,
+                user: 'Tim',
+                use_stop: true,
+                client: 'Onyx',
+                project: 'Onyx One - 2.0',
+                project_color: '0',
+                project_hex_color: '#c7af14',
+                task: 'BUG',
+                billable: null,
+                is_billable: false,
+                cur: null,
+                tags: []
             }
         ]
 
@@ -352,7 +374,8 @@ describe('get user commands from Toggl', () => {
             'tempo l OV-57 1h13m 2022-10-10 -w Overhead:Meetings -d "Mails"',
             'tempo l QB-1444 1h13m 2022-10-10 -w Analysis',
             'tempo l OV-408 22m 2022-10-10 -w Overhead:AdministrativeTasks -d "Daily"',
-            'tempo l OV-57 38m 2022-10-10 -w Overhead:Meetings -d "Mails"'
+            'tempo l OV-57 38m 2022-10-10 -w Overhead:Meetings -d "Mails"',
+            'tempo l ES-1034 3h56m 2022-10-19 -w Analysis -d "Write script"'
         ])
     })
 })

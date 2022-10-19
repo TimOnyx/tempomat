@@ -145,6 +145,10 @@ function getTypeFromTicketTaskAndDescription(ticket: string, task: string | null
         return TYPES.overhead
     }
 
+    if (ticket.includes('ES-')) {
+        return TYPES.analysis
+    }
+
     // TESTING
     if (description.toLowerCase().includes('test')) {
         return TYPES.testing
@@ -155,10 +159,10 @@ function getTypeFromTicketTaskAndDescription(ticket: string, task: string | null
 
     // TICKET WRITING
     if (description.toLowerCase().includes('write')) {
-        return TYPES.codeReview
+        return TYPES.ticketWriting
     }
     if (description.toLowerCase().includes('writing')) {
-        return TYPES.codeReview
+        return TYPES.ticketWriting
     }
 
     // ANALYSIS
@@ -233,10 +237,6 @@ function getTypeFromTicketTaskAndDescription(ticket: string, task: string | null
         return TYPES.analysis
     }
     if (task === TASKS.helpdesk) {
-        return TYPES.analysis
-    }
-
-    if (ticket.includes('ES-')) {
         return TYPES.analysis
     }
 
