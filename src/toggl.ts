@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import togglApi from './api/togglapi'
 import time from './time'
 import { ENV } from './config'
+import globalFlags from './globalFlags'
 
 export default {
 
@@ -25,7 +26,12 @@ export default {
                 workspace_id: ENV.workspace_id
             })
             cli.action.stop('Done.')
-
+            if (globalFlags.debug) {
+                console.log('raw entries:')
+                console.log('--------------------------------------------')
+                entries.data.forEach(item => console.log(item))
+                console.log('--------------------------------------------')
+            }
             const list = entriesList.render(entries.data)
             console.log('Copy and paste these back into the terminal:')
             console.log('--------------------------------------------')

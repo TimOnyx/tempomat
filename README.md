@@ -12,6 +12,10 @@
 1. Copy the output back into the terminal.
 1. Don't close the terminal while it is still running. 
 
+## Contributing tests
+
+Sometimes the algoritm to decide on the worklog type might be incorrect. You can print the raw Toggl entries using the debug flag: `tempo fromToggl --debug`. This way, it's easy to add a test to the specs.
+
 ## Onyx One specific changes:
 
 - use `-w` to add a work log type.
