@@ -361,7 +361,7 @@ describe('get user commands from Toggl', () => {
         const result = render(entries.data)
 
         expect(result).toStrictEqual([
-            'tempo l QB-1444 40m 2022-10-10 -w CodeReview -d "PR"',
+            'tempo l QB-1444 40m 2022-10-10 -w CodeReview',
             'tempo l QB-1463 1h32m 2022-10-10 -w Development',
             'tempo l OV-57 25m 2022-10-10 -w Overhead:Meetings -d "Research: How does Netflix use graphql"',
             'tempo l SOPS-136 56m 2022-10-10 -w Analysis',

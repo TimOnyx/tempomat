@@ -28,6 +28,11 @@ function generateContent(entry: GetEntriesResponseDataItem) {
         return `tempo l ${ticket} ${readableDuration} ${date} -w ${type}`
     }
 
+    // TODO: extract, add more edge cases like 'write ticket'
+    if (type === TYPES.codeReview && description === 'PR') {
+        return `tempo l ${ticket} ${readableDuration} ${date} -w ${type}`
+    }
+
     return `tempo l ${ticket} ${readableDuration} ${date} -w ${type} -d "${description}"`
 }
 
