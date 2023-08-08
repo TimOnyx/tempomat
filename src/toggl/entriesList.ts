@@ -55,6 +55,18 @@ function getTicketFromDescription(description: string): string {
     if (description.toLowerCase().includes('retro')) {
         return OVERHEAD_TICKETS.scrum
     }
+    if (description.toLowerCase().includes('refinement')) {
+        return OVERHEAD_TICKETS.scrum
+    }
+    if (description.toLowerCase().includes('standup')) {
+        return OVERHEAD_TICKETS.scrum
+    }
+    if (description.toLowerCase().includes('planning')) {
+        return OVERHEAD_TICKETS.scrum
+    }
+    if (description.toLowerCase().includes('sprint')) {
+        return OVERHEAD_TICKETS.scrum
+    }
     // Overhead
     if (description.toLowerCase().includes('research:')) {
         return OVERHEAD_TICKETS.overhead
@@ -83,6 +95,9 @@ function getTicketFromDescription(description: string): string {
         return description.split(':')[0]
     }
     if (description.includes('ES-')) {
+        return description.split(':')[0]
+    }
+    if (description.includes('OVA-')) {
         return description.split(':')[0]
     }
 
